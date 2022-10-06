@@ -18,7 +18,10 @@ def random_wait():
 def main():
     with open('headers.json', 'r') as f:
         headers = json.load(f)
+    with open('cookie.txt', 'r') as f:
+        cookie = f.read()
 
+    headers['cookie'] = cookie
     my_screen_name = get_my_screen_name(headers)
     notifications = get_notifications(headers)
     screen_names = set()  # type: Set[str]
